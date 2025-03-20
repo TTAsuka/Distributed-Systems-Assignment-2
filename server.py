@@ -72,7 +72,6 @@ def add_wikipedia_info(topic, keyword):
         page_title = titles[0]
         page_link = links[0]
 
-        # 2) Use 'action=query&prop=extracts' to get a short summary
         summary_url = "https://en.wikipedia.org/w/api.php"
         summary_params = {
             'action': 'query',
@@ -94,9 +93,6 @@ def add_wikipedia_info(topic, keyword):
                 page_extract = page_info["extract"].strip()
             break
 
-        # Check if it's a disambiguation page
-        # Some disambiguation pages have "may refer to:" style text or special page properties.
-        # It's optional to parse that further, but let's just store what we got.
         if not page_extract:
             page_extract = "No content available (page may be a disambiguation or has no intro)."
 
